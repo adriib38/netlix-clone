@@ -1,0 +1,30 @@
+{% extends "layouts/base.html" %}
+
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static '/styles/movie.css' %}">
+{% endblock %}
+
+{% block title %}Movie{% endblock %}
+
+{% block content %}
+    {% if movieInList %}
+        <a href={% url 'toggleToList' 'movie' movie.uuid %}>Remove from list</a>
+    {% else %}
+        <a href={% url 'toggleToList' 'movie' movie.uuid %}>Add to list</a>
+    {% endif %}
+
+    
+    <h1>{{ movie.title }}</h1>
+
+    {% if movie.video %}
+        <video controls src="/media/{{ movie.video }}" width="70%"/>
+    {% else %}
+        <p>Video no disponible</p>
+    {% endif %}
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
+

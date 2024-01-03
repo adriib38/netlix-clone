@@ -1,0 +1,89 @@
+body {
+    background-color: rgb(22, 22, 22);
+    background-image: url('/static/background-covers.jpg');
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+#top-bar {
+    background: linear-gradient(#000000, #ffffff00);
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+#logo {
+    width: 200px;
+    margin-left: 20px;
+}
+
+nav {
+    display: none;
+}
+
+main {
+    min-height: 100%;
+}
+
+#login-form {
+    margin: 100px auto -236px;
+    max-width: 450px;
+    color: white;
+    border-radius: 4px;
+}
+
+#login-form form {
+    background-color: rgba(0, 0, 0, 0.75);
+    padding: 20px 60px;
+    border-radius: 5px;
+}
+
+#login-form h2 {
+    text-align: left;
+}
+
+#login-form label {
+    display: block;
+}
+
+#login-form input {
+    width: 100%;
+    background: #333;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+    height: 40px;
+    line-height: 50px;
+    padding: 8px 14px;
+}
+
+#login-form #submit {
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 500;
+    margin: 24px 0 12px;
+    background: #e50914;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    padding: 16px;
+    width: 100%;
+}
+
+.new-in-netflix {
+    color: #999;
+}
+
+a {
+    color: #fff;
+}
+
+#ui-message-error {
+    background: #e87c03;
+    border-radius: 4px;
+    padding: 16px;
+}

@@ -1,0 +1,33 @@
+h2 {
+    font-size: 14px;
+    font-weight: 800;
+    text-shadow: #000 1px 0 10px ;
+}
+
+#header {
+    display: flex;
+    justify-content: center;
+    width:100%;
+    height: 400px;
+}
+
+#header img {
+    width:100%;
+    object-fit: cover;
+}
+
+#header .description {
+    position: absolute;
+    top: 350px;
+    left: 70px;
+}
+
+#header .title {
+    position: absolute;
+    top: 180px;
+    left: 70px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 70px;
+}
+
+

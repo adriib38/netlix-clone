@@ -1,0 +1,46 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block title %}Movies{% endblock %}
+
+{% block content %}
+
+<div id="modal-movie-serie" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-info">
+            <img class="cover" width>
+            <h3 class="title"></h3>
+            <p class="duration"></p>
+            <p class="description"></p>
+            <a class="link">Play</href>
+        </div>
+    </div>
+</div>
+
+<div id="sections">
+    <h1>Movies</h1>
+    
+    {% for genre in genres.genres %}
+        <h2>{{ genre.name }}</h2>
+        <section class="deck">
+            {% for movie in genre.movies %}
+                <article class="card" id="{{ movie.uuid }}" type="movie">
+                    <img src="media/{{ movie.cover_image}}" width="280"/>
+               <!--     <h3><a href="movie/{{ movie.uuid }}">{{ movie.title }}</a></h3>-->
+               </article>
+            {% endfor %}
+        </section>
+
+    {% endfor %}
+</div>
+
+    <script src="{% static '/js/index.js' %}"></script>
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
+
+    

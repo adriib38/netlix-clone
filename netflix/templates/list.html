@@ -1,0 +1,33 @@
+{% extends "layouts/base.html" %}
+
+{% load static %}
+
+{% block title %}List{% endblock %}
+
+{% block content %}
+
+    <h1>List</h1>
+    
+    {% for content in list %}
+    <ul>
+        {% if content.content_type == 'movie' %}
+            <li>
+                <a href="{% url 'movie' content.movie.uuid %}">{{ content.movie.title }}</a>
+            </li>
+        {% elif content.content_type == 'serie' %}
+            <li>
+                <a href="{% url 'serie' content.serie.uuid %}">{{ content.serie.title }}</a>
+            </li>
+        {% endif %}
+    </ul>
+    {% endfor %}
+
+
+
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
+
+    

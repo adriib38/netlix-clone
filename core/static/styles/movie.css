@@ -1,0 +1,9 @@
+main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+video {
+    border-radius: 5px;
+}

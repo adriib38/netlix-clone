@@ -1,0 +1,39 @@
+{% extends "layouts/base.html" %}
+
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static '/styles/login.css' %}">
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<div id="top-bar">
+    <img src="{% static 'logo_netflix.png' %}" id="logo" />
+</div>
+
+<div id="login-form">
+
+    <form action="{% url 'login' %}" method="POST" id="login">
+        <h2>Sign In</h2>
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        {% if error %}
+            <p id="ui-message-error">{{ error |safe }}</p>
+        {% endif %}
+
+        <p class="new-in-netflix">New in netflix? <a href="subscribe">Sign up now.</a></p>
+
+        <button id="submit">Login</button>    
+    </form>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
+

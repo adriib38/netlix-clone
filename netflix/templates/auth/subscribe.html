@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %} 
+
+{% block extra_css %}
+{% load static %}
+    <link rel="stylesheet" href="{% static '/styles/subscribe.css' %}">
+{% endblock %}
+
+{% block title %}Subscribe{% endblock %}
+
+{% block content %}
+
+<div id="top-bar">
+  <img src="{% static 'logo_netflix.png' %}" id="logo" />
+</div>
+
+<div id="subscribe-form">
+    <form action="{% url 'subscribe' %}" method="POST" id="subscribe">
+        <h2>Subscribe</h2>
+        {% csrf_token %} 
+        {{ form.as_p }} 
+   
+        {% if error %}
+            <p id="ui-message-error">{{ error |safe }}</p>
+        {% endif %}
+
+        <p class="new-in-netflix">Do you have an account? <a href="login">Sing in.</a></p>
+
+        <button id="submit">Subscribe</button>    
+  </form>
+</div>
+
+
+{% endblock %}
+
+{% block footer %}
+    
+{% endblock %}
+
