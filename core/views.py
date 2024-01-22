@@ -16,7 +16,8 @@ import json
 
 
 def index(request):
-   header_movie = Movie.objects.all()[1]
+
+   header_movie = Movie.objects.all().first()
 
    listUser = ListContent.objects.filter(user_id=request.user.id).first()
    content = Content.objects.filter(list_content=listUser)
@@ -61,13 +62,20 @@ def index(request):
       # Agregar datos del género a la lista
       data["genres"].append(genre_data)
 
+   moviesNoGenre = Movie.objects.filter(genres__isnull=True)
+   seriesNoGenre = Serie.objects.filter(genres__isnull=True)
+
    context = {
       'genres': data,
+      'moviesNoGenre': moviesNoGenre,
+      'seriesNoGenre': seriesNoGenre,
       'header_movie': header_movie,
       'list': content
    }
    return render(request, 'index.html', context)
 
+ 
+ 
 def login(request):
    if request.method == 'GET':
       return render(request, 'auth/login.html', {
@@ -133,7 +141,8 @@ def movies(request):
 
    genres = Genre.objects.filter(movie__isnull=False).distinct()
    movies = Movie.objects.all()
-   
+   moviesNoGenre = Movie.objects.filter(genres__isnull=True)
+
    data = {"genres": []}
    for genre in genres:
       genre_movies = movies.filter(genres=genre)
@@ -152,7 +161,8 @@ def movies(request):
       genre_movies = []
 
    context = {
-      'genres': data
+      'genres': data,
+      'moviesNoGenre': moviesNoGenre
    }
    return render(request, 'movies.html', context)
 
@@ -174,7 +184,8 @@ def movie(request, movie_uuid):
 def series(request):
    genres = Genre.objects.filter(serie__isnull=False).distinct()
    series = Serie.objects.all()
-   
+   seriesNoGenre = Serie.objects.filter(genres__isnull=True)
+
    data = {"genres": []}
    for genre in genres:
       genre_movies = series.filter(genres=genre)
@@ -193,7 +204,8 @@ def series(request):
 
 
    context = {
-      'genres': data
+      'genres': data,
+      'seriesNoGenre': seriesNoGenre
    }
    return render(request, 'series.html', context)
 

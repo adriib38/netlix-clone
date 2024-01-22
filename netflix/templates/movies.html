@@ -21,7 +21,6 @@
 
 <div id="sections">
     <h1>Movies</h1>
-    
     {% for genre in genres.genres %}
         <h2>{{ genre.name }}</h2>
         <section class="deck">
@@ -32,8 +31,17 @@
                </article>
             {% endfor %}
         </section>
-
     {% endfor %}
+
+    <h2>Other movies</h2>
+    <section class="deck">
+        {% for movie in moviesNoGenre %}
+            <article class="card" id="{{ movie.uuid }}" type="movie">
+                <img src="media/{{ movie.cover_image}}" width="280"/>
+            </article>
+        {% endfor %}
+    </section>
+
 </div>
 
     <script src="{% static '/js/index.js' %}"></script>

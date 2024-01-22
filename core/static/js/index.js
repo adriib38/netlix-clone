@@ -41,19 +41,19 @@ cards.forEach((card) => {
             const movieJson = await getMovieInfo(typeCard, card.id);
 
             const infoDiv = document.createElement("div");
-            const titleP = document.createElement("p");
+            const titleH3 = document.createElement("h3");
             const descP = document.createElement("p");
             const genresP = document.createElement("p");
             const playA = document.createElement("a");
 
-            titleP.style.margin = '0px';
-            titleP.textContent = movieJson.title;
+            titleH3.style.margin = '0px';
+            titleH3.textContent = movieJson.title;
             descP.textContent = movieJson.description;
             genresP.textContent = movieJson.genres[0] ?? '';
             playA.setAttribute("href", `/${typeCard}/${ movieJson.uuid }`);
             playA.textContent = 'play';
 
-            infoDiv.appendChild(titleP);
+            infoDiv.appendChild(titleH3);
             infoDiv.appendChild(descP);
             infoDiv.appendChild(genresP);
             infoDiv.appendChild(playA);

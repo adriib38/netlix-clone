@@ -18,7 +18,7 @@ class Movie(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4)
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=200)
-    genres = models.ManyToManyField(Genre, null=False)
+    genres = models.ManyToManyField(Genre, blank=True)
     duration_min = models.IntegerField(null=True)
     cover_image = models.ImageField(
         upload_to='movie_images', 
@@ -30,11 +30,10 @@ class Movie(models.Model):
     )
     video = models.FileField(
         upload_to='movie_videos',
-        null=True,
+        blank=True,
         validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])]
     )
     views = models.IntegerField(default = 0)
-    
 
     def __str__(self):
         return self.title
@@ -43,9 +42,9 @@ class Serie(models.Model):
     uuid = models.UUIDField(default=uuid.uuid4)
     title = models.CharField(max_length=20)
     description = models.TextField(max_length=200)
-    genres = models.ManyToManyField(Genre, null=False)
+    genres = models.ManyToManyField(Genre, blank=True)
     cover_image = models.ImageField(
-        upload_to='movie_images', 
+        upload_to='serie_images', 
         height_field=None, 
         width_field=None, 
         max_length=100, 
