@@ -6,24 +6,40 @@
 
 {% block content %}
 
+<div id="modal-movie-serie" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="modal-info">
+            <img class="cover" width>
+            <h3 class="title"></h3>
+            <p class="duration"></p>
+            <p class="description"></p>
+            <a class="link">Play</href>
+        </div>
+    </div>
+</div>
+
+<div id="sections">
     <h1>List</h1>
-    
+
     {% for content in list %}
-    <ul>
-        {% if content.content_type == 'movie' %}
-            <li>
-                <a href="{% url 'movie' content.movie.uuid %}">{{ content.movie.title }}</a>
-            </li>
-        {% elif content.content_type == 'serie' %}
-            <li>
-                <a href="{% url 'serie' content.serie.uuid %}">{{ content.serie.title }}</a>
-            </li>
-        {% endif %}
-    </ul>
+        <section class="deck">
+            {% if content.content_type == 'movie' %}
+                <article class="card" id="{{ content.movie.uuid }}" type="movie">
+                    <img src="media/{{ content.movie.cover_image}}" width="280"/>
+                </article>
+            {% elif content.content_type == 'serie' %}
+                <article class="card" id="{{ content.serie.uuid }}" type="serie">
+                    <img src="media/{{ content.serie.cover_image}}" width="280"/>
+                </article>
+            {% endif %}
+        </section>
     {% endfor %}
 
+</div>
+   
 
-
+<script src="{% static '/js/index.js' %}"></script>
 {% endblock %}
 
 {% block footer %}

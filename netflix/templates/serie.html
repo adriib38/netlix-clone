@@ -5,6 +5,7 @@
 {% block title %}Serie{% endblock %}
 
 {% block content %}
+
     {% if serieInList %}
         <a href={% url 'toggleToList' 'serie' serie.uuid %}>Remove from list</a>
     {% else %}
@@ -22,8 +23,6 @@
         {% endfor %}
         </ul>
     {% endfor %}
-
-      
  
 {% endblock %}
 

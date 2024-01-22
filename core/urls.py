@@ -26,8 +26,6 @@ urlpatterns = [
     path('toggle-to-list/<str:typevideo>/<str:uuid>', views.toggleToList, name='toggleToList'),
     path('list', views.listUser, name='list'),
 
-
     path('api/', include(router.urls)),
-
 ]
 
