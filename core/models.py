@@ -69,8 +69,8 @@ class Chapter(models.Model):
     duration_min = models.IntegerField(null=True)
     season = models.ForeignKey(Season, on_delete=models.CASCADE)
     video = models.FileField(
-        upload_to='movie_videos',
-        null=True,
+        upload_to='serie_videos',
+        blank=True,
         validators=[FileExtensionValidator(allowed_extensions=['MOV','avi','mp4','webm','mkv'])]
     )
     def __str__(self):
