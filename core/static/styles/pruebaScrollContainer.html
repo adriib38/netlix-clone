@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desplazamiento Horizontal con Flechas</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden; /* Oculta la barra de desplazamiento del cuerpo */
+        }
+
+        .horizontal-scroll-container {
+            white-space: nowrap;
+            display: flex;
+            padding: 20px;
+        }
+
+        .item {
+            flex: 0 0 auto;
+            width: 300px; /* Ajusta el ancho de cada artículo según tus necesidades */
+            margin-right: 20px; /* Espacio entre artículos */
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .scroll-arrow {
+            position: fixed;
+            top: 50%;
+            width: 30px;
+            height: 30px;
+            background-color: #616161;
+            color: white;
+            border: none;
+            cursor: pointer;
+            z-index: 1;
+            display: none;
+        }
+
+        .scroll-left { left: 0; }
+        .scroll-right { right: 0; }
+    </style>
+</head>
+<body>
+    <button class="scroll-arrow scroll-left">&lt;</button>
+    <section class="horizontal-scroll-container">
+        <article class="item">Artículo 1</article>
+        <article class="item">Artículo 2</article>
+        <article class="item">Artículo 3</article>
+        <article class="item">Artículo 1</article>
+        <article class="item">Artículo 2</article>
+        <article class="item">Artículo 3</article>
+        <article class="item">Artículo 1</article>
+        <article class="item">Artículo 2</article>
+        <article class="item">Artículo 3</article>
+        <article class="item">Artículo 1</article>
+        <article class="item">Artículo 2</article>
+        <article class="item">Artículo 3</article>
+        <article class="item">Artículo 1</article>
+        <article class="item">Artículo 2</article>
+        <article class="item">Artículo 3</article>
+        <!-- Agrega más artículos según sea necesario -->
+    </section>
+    <button class="scroll-arrow scroll-right">&gt;</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const container = document.querySelector('.horizontal-scroll-container');
+            const scrollLeftBtn = document.querySelector('.scroll-left');
+            const scrollRightBtn = document.querySelector('.scroll-right');
+
+            document.body.addEventListener('click', function() {
+                container.scrollLeft -= 100; // Ajusta según sea necesario
+            });
+
+            scrollRightBtn.addEventListener('click', function() {
+                container.scrollLeft += 100; // Ajusta según sea necesario
+            });
+
+            container.addEventListener('scroll', function() {
+                // Muestra u oculta las flechas según sea necesario
+                scrollLeftBtn.style.display = container.scrollLeft > 0 ? 'block' : 'none';
+                scrollRightBtn.style.display = container.scrollLeft < container.scrollWidth - container.clientWidth ? 'block' : 'none';
+            });
+        });
+    </script>
+</body>
+</html>

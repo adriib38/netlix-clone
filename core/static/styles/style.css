@@ -41,12 +41,20 @@ nav .logo {
     gap: 20px;
 }
 
+.horizontal-scroll-container {
+    overflow-x: auto;
+    white-space: nowrap;
+    display: flex;
+    padding: 20px;
+}
+
 .card {
     overflow: hidden;
     height: 150px;
+    min-width: 300px;
     object-fit: cover;
     border-radius: 4px;
-    transition: .3s;
+    transition: .4s;
     z-index: 1;
 }
 
@@ -57,7 +65,7 @@ nav .logo {
 .card-expanded {
     position: relative;
     z-index: 2;
-    transform: scale(1.2);
+    transform: scale(1.05);
     padding: 15px;
     background: #111111;
 }
