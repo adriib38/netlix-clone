@@ -1,5 +1,10 @@
 from pathlib import Path
+import dj_database_url
 import os
+
+#from django_environ import Env
+#env = Env()
+#env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -64,11 +69,18 @@ WSGI_APPLICATION = 'netflix.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    #'default': dj_database_url.parse(env.str("DATABASE_URL")
+    'default': dj_database_url.parse('postgres://clone_netflix_db_vkoa_user:00WR1Ib4WUtMeeyO8JT7AAGXDO5iL6UY@dpg-cmv7kpqcn0vc73anch10-a.frankfurt-postgres.render.com/clone_netflix_db_vkoa')
+
 }
 
 

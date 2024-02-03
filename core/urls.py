@@ -5,7 +5,6 @@ from . import views
 from rest_framework import routers
 from .api import MoviesViewSet, SeriesViewSet
 
-
 router = routers.DefaultRouter()
 router.register(r'movies', MoviesViewSet, 'movie')
 
